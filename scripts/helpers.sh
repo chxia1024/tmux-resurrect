@@ -1,4 +1,4 @@
-default_resurrect_dir="$HOME/.tmux/resurrect"
+default_resurrect_dir="$HOME/chxia/sw/tmux/.tmux/resurrect"
 resurrect_dir_option="@resurrect-dir"
 
 SUPPORTED_VERSION="1.9"
