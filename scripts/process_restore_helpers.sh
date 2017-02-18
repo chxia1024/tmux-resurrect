@@ -97,6 +97,13 @@ _proc_matches_full_command() {
 		# regex matching the command makes sure process is a "word"
 		if [[ "$pane_full_command" =~ (^${match} ) ]] || [[ "$pane_full_command" =~ (^${match}$) ]]; then
 			return 0
+		else
+			# matching the binary name with "word", which is useful when the command is started with a binary by full path
+			# such as (/usr/bin/ssh /path/to/vim)
+			bin=$(echo $pane_full_command | cut -d' ' -f1 | rev | cut -d '/' -f1 | rev)
+			if [ "$bin" == "$match" ]; then
+				return 0
+			fi
 		fi
 	fi
 	return 1
